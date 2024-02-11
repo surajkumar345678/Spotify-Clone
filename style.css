@@ -83,7 +83,10 @@ body {
 }
 
 .spotifyPlaylist {
-    padding: 15px;
+    padding: 16px;
+}
+.spotifyPlaylist  h1{
+    padding: 16px;
 }
 
 .cardContainer {
@@ -91,7 +94,7 @@ body {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 70vh;
 }
 
@@ -172,7 +175,7 @@ body {
     border-radius: 10px;
     /* width: 90%; */
     width: 70vw;
-    height: 40px;
+    min-height: 40px;
     padding: 12px;
 }
 
@@ -186,6 +189,21 @@ body {
     height: 630px;
     overflow: auto;
     margin-bottom: 40px;
+}
+
+.hamburger {
+    display: none;
+}
+
+.close{
+    display: none;
+}
+
+.hamburgerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
 }
 
 .songList ul {
@@ -222,7 +240,7 @@ body {
     padding: 12px;
 }
 
-.seekbar{
+.seekbar {
     height: 4px;
     width: 98%;
     background: black;
@@ -233,7 +251,7 @@ body {
     cursor: pointer;
 }
 
-.circle{
+.circle {
     width: 15px;
     height: 15px;
     border-radius: 13px;
@@ -244,16 +262,71 @@ body {
     transition: left 0.5s;
 }
 
-.songbuttons img{
+.songbuttons img {
     cursor: pointer;
 }
 
-.songinfo, .songtime{
+.songinfo,
+.songtime {
     color: black;
     padding: 0 1rem;
 }
 
-.abovebar{
+.abovebar {
     display: flex;
     justify-content: space-between;
+    margin: 20px 0;
+}
+
+@media (max-width:1400px) {
+    .left {
+        background-color: black;
+        position: absolute;
+        left: -120%;
+        transition: all .3s;
+        z-index: 1;
+        width: 370px;
+    }
+
+    .left .close {
+        position: absolute;
+        right: 30px;
+        top: 25px;
+        width: 29px;
+    }
+
+    .right {
+        width: 100vw;
+        margin: 0;
+    }
+
+    .playbar { 
+        width: calc(100vw - 60px);
+
+    }
+
+    .seekbar {
+        width: calc(100vw - 70px);
+    }
+
+    .hamburger {
+        display: block;
+    }
+    .card{
+        width: 90vw;
+
+    }
+
+    .cardContainer{
+        margin: 0;
+        justify-content: center;
+    }
+    .close{
+        display: block;
+    }
+    .abovebar {
+        flex-direction: column;
+        gap: 23px;
+        align-items: center;
+    }
 }
