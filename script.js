@@ -81,8 +81,7 @@ async function displayAlbums() {
 
             let a = await fetch(`http://127.0.0.1:3000/songs/${folder}/info.json`)
             let response = await a.json();
-            console.log(response);
-            cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder="ncs" class="card">
+            cardContainer.innerHTML += `<div data-folder="${folder}" class="card">
             <div class="play">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -93,21 +92,21 @@ async function displayAlbums() {
             <img src="./songs/${folder}/cover.jpeg" alt="">
             <h2>${response.title}</h2>
             <p>${response.description}</p>
-        </div>`
+        </div>`;
 
 
         }
     }
     Array.from(document.getElementsByClassName("card")).forEach(e => {
         e.addEventListener("click", async item => {
-            songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)
-        })
-    })
+            songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`);
+        });        
+    });
 }
 
 
 async function main() {
-    await getSongs("songs/ncs")
+    await getSongs("songs/Jazz_For_Sleep")
     playMusic(songs[0], true)
 
     displayAlbums()
